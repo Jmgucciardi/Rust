@@ -1,0 +1,4 @@
+This line containts foobar
+This line will not
+This will will also have foobar
+As will this line: foobar
