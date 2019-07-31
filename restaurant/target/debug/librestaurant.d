@@ -1,0 +1,1 @@
+C:\Users\jgucciardi\Rust\restaurant\target\debug\librestaurant.rlib: C:\Users\jgucciardi\Rust\restaurant\src\front_of_the_house\hosting.rs C:\Users\jgucciardi\Rust\restaurant\src\front_of_the_house.rs C:\Users\jgucciardi\Rust\restaurant\src\lib.rs
