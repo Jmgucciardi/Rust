@@ -1,24 +1,32 @@
 use std::collections::HashMap;
 
-fn main() {
-    // given a list of integers, use a vector and return the mean, median (when sorted, the value in the middle position),
-    // and mode
-    {
-        let v = vec![1,1,1,2,1,3,4,4,5,5,5];
-        let length = v.len();
-        let mut median = 0;
-        let mut data = HashMap::new();
-        for score in &v {
-            let count = data.entry(score).or_insert(0);
-            *count += 1;
-        }
-        for ( key, value ) in &data {
-            println!("{}: {}", key, value);
-            median += *key * value
-        }
+fn average(numbers: &[i32]) -> f32 {
+    numbers.iter().sum::<i32>() as f32 / numbers.len() as f32
+}
 
+fn median(numbers: &mut[i32]) -> i32 {
+    numbers.sort();
+    let mid = numbers.len() / 2;
+    numbers[mid]
+}
 
-        println!("length: {}", &length);
-        println!("median: {}", median)
+fn mode(numbers: &[i32]) -> i32 {
+    let mut number_map = HashMap::new();
+
+    for &value in numbers {
+        *number_map.entry(value).or_insert(0) += 1;
     }
+
+    number_map.into_iter()
+        .max_by_key(|&(_, count)| count)
+        .map(|(val, _)| val)
+        .expect("Can not compute the mode of zero numbers!")
+}
+
+fn main() {
+    let mut numbers = vec![42, 1, 36, 76, 378, 43, 1, 43, 54, 2, 3, 43];
+
+    println!("Average: {}", average(&numbers));
+    println!("Median: {}", median(&mut numbers));
+    println!("Median: {}", mode(&numbers));
 }
